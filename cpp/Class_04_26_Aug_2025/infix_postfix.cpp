@@ -65,7 +65,7 @@ int main () {
 		}
 		stack[stack_size] = 0; output_expression[o] = 0; cout << input_expression[i] << " | " << stack << " | " << output_expression << endl;
 	}
-	while (stack_size) output_expression[o++] = stack[--stack_size];
+	while (stack_size) output_expression[o++] = stack[--stack_size]; output_expression[o] = 0;
 	cout << "Postfix Expression: " << output_expression << endl;
 	return 0;
 }
