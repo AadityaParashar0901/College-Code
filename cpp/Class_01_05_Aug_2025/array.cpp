@@ -2,7 +2,6 @@
 using namespace std;
 
 #define ARRAY_MAX_SIZE 1024 // maximum array size
-#define TRUE 1
 
 // error messages
 char *errorMessage;
@@ -40,7 +39,7 @@ public:
 	void remove(int position) {
 		if (position < 0 || position >= current_size) { errorMessage = outOfBoundError; return; }
 		for (int i = position; i < current_size; i++) array[i] = array[i + 1];
-		array[current_size--];
+		array[current_size--] = 0;
 		cout << "Removed element from Position: " << position << endl; }
 	void clear() {
 		for (int i = 0; i < current_size; i++) array[i] = 0;
@@ -51,14 +50,14 @@ public:
 int main() {
 	class Array array;
 	int choice = 0, position = 0, value = 0, size = 0;
-	while (TRUE) {
+	while (1) {
 		errorMessage = NULL;
 		cout << "The array has " << array.getSize() << " elements.\n";
-		cout << "Select your switch:\n";
-		cout << "1. Fill a value Array\n";
+		cout << "Select your choice:\n";
+		cout << "1. Fill Array\n";
 		cout << "2. Display Array\n";
-		cout << "3. Insert an element\n";
-		cout << "4. Delete an element\n";
+		cout << "3. Insert Element\n";
+		cout << "4. Delete Element\n";
 		cout << "5. Clear Array\n";
 		cout << "Other. Exit\n";
 		cin >> choice;

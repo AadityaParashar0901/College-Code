@@ -19,12 +19,14 @@ int main() {
 		}
 		if (foundString) {
 			foundCount++;
-			for (j = 0; replaceString[j] != 0; j++) outputString[o++] = replaceString[j];
+			for (j = 0; replaceString[j] != 0; j++)
+				outputString[o++] = replaceString[j];
 			i += --k;
 		} else outputString[o++] = string[i];
 	}
 	outputString[o] = 0;
 	cout << "Final string is: " << outputString << endl;
-	if (foundCount == 0) cout << "No matches found!\n"; else cout << foundCount << " matches found!\n";
+	if (foundCount == 0) cout << "No matches found!\n"; 
+	else cout << foundCount << " matches found!\n";
 	return 0;
 }
