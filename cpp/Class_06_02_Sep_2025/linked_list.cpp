@@ -47,7 +47,7 @@ public:
 		while (tmp != NULL) cout << tmp->value << (((tmp = tmp->next) == NULL) ? "\n" : ","); }
 	int search (int value) {
 		if (head == NULL) return 0;
-		Node *tmp = head; int p = 2;
+		Node *tmp = head; int p = 1;
 		for (; tmp != NULL && tmp->value != value; p++) tmp = tmp->next;
 		if (tmp == NULL) return 0;
 		return p; }
@@ -99,8 +99,10 @@ int main() {
 				list.delete_position(position); break;
 			case 8: list.delete_end(); break;
 			case 9: list.traverse(); break;
-			case 10: cout << "Enter Value to Search: "; cin >> value;
-				cout << "Position of " << value << " is " << list.search(value) << endl; break;
+			case 10: cout << "Enter Value to Search: "; cin >> value; position = list.search(value);
+				if (position == 0) cout << value << " couldn't be found";
+				else cout << "Position of " << value << " is " << position;
+				cout << endl; break;
 			case 11: list.reverse(); break;
 			case 12: list.clear(); break;
 			default: cout << "Invalid Choice\nExiting";
