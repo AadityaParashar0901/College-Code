@@ -68,20 +68,20 @@ public:
 };
 int main() {
 	SinglyLinkedList list; int choice, position, value;
+	cout << "1. Create Linked List\n";
+	cout << "2. Count Number of Nodes\n";
+	cout << "3. Insert Value at Beginning\n";
+	cout << "4. Insert Value at Position\n";
+	cout << "5. Insert Value at End\n";
+	cout << "6. Delete Value from Beginning\n";
+	cout << "7. Delete Value from Position\n";
+	cout << "8. Delete Value from End\n";
+	cout << "9. Traverse List\n";
+	cout << "10. Search in List\n";
+	cout << "11. Reverse List\n";
+	cout << "12. Clear List\n";
 	do {
-		cout << "1. Create Linked List\n";
-		cout << "2. Count Number of Nodes\n";
-		cout << "3. Insert Value at Beginning\n";
-		cout << "4. Insert Value at Position\n";
-		cout << "5. Insert Value at End\n";
-		cout << "6. Delete Value from Beginning\n";
-		cout << "7. Delete Value from Position\n";
-		cout << "8. Delete Value from End\n";
-		cout << "9. Traverse List\n";
-		cout << "10. Search in List\n";
-		cout << "11. Reverse List\n";
-		cout << "12. Clear List\n";
-		cout << "Enter Choice:"; cin >> choice;
+		cout << "Enter Choice: "; cin >> choice;
 		switch (choice) {
 			case 1: cout << "Enter Number of Nodes to Create: "; cin >> position;
 				cout << "Enter Value to Fill with: "; cin >> value;
@@ -105,6 +105,7 @@ int main() {
 			case 12: list.clear(); break;
 			default: cout << "Invalid Choice\nExiting";
 		}
+		cout << endl;
 	} while (choice >= 0 && choice <= 12);
 	return 0;
 }
