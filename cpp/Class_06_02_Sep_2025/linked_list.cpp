@@ -12,88 +12,62 @@ private:
 public:
 	SinglyLinkedList () { head = NULL; }
 	void create (int count, int value) {
-		head = new Node (value);
-		Node *tmp = head;
-		for (int i = 1; i < count; i++) tmp = tmp->next = new Node (value);
-	}
-	int size () {
-		Node *tmp = head; int l = 0;
+		Node *tmp = head = new Node (value);
+		for (int i = 1; i < count; i++) tmp = tmp->next = new Node (value); }
+	int size () { Node *tmp = head; int l = 0;
 		for (; tmp != NULL; l++) tmp = tmp->next;
-		return l;
-	}
-	void insert_beginning (int value) {
-		head = new Node (value, head);
-	}
-	void insert_position (int position, int value) { // 1 <= position <= length + 1
-		Node *tmp = head;
+		return l; }
+	void insert_beginning (int value) { head = new Node (value, head); }
+	void insert_position (int position, int value) { Node *tmp = head; // 1 <= position <= length + 1
 		for (int i = 1; i < position - 1 && tmp != NULL; i++) tmp = tmp->next;
-		if (tmp == NULL) return;
-		tmp->next = new Node (value, tmp->next);
-	}
+		if (tmp == NULL) return; tmp->next = new Node (value, tmp->next); }
 	void insert_end (int value) {
 		if (head == NULL) return insert_beginning (value);
 		Node *tmp;
 		for (tmp = head; tmp->next != NULL; ) tmp = tmp->next;
-		tmp->next = new Node (value);
-	}
+		tmp->next = new Node (value); }
 	void delete_beginning () {
 		if (head == NULL) return;
-		Node *tmp = head;
-		head = head->next;
-		delete tmp;
-	}
+		Node *tmp = head; head = head->next;
+		delete tmp; }
 	void delete_position (int position) {
 		if (head == NULL) return;
 		Node *tmp = head;
 		for (int i = 1; i < position - 1 && tmp != NULL; i++) tmp = tmp->next;
-		Node *tmp2 = tmp->next;
-		tmp->next = tmp->next->next;
-		delete tmp2;
-	}
+		Node *tmp2 = tmp->next; tmp->next = tmp->next->next;
+		delete tmp2; }
 	void delete_end () {
 		if (head == NULL) return;
 		Node *tmp, *prev = NULL;
 		for (tmp = head; tmp->next != NULL; ) { prev = tmp; tmp = tmp->next; }
-		delete tmp;
-		if (prev != NULL) prev->next = NULL;
-	}
+		delete tmp; if (prev != NULL) prev->next = NULL; }
 	void traverse () {
 		if (head == NULL) return;
 		Node *tmp = head;
-		while (tmp != NULL) cout << tmp->value << (((tmp = tmp->next) == NULL) ? "\n" : ",");
-	}
+		while (tmp != NULL) cout << tmp->value << (((tmp = tmp->next) == NULL) ? "\n" : ","); }
 	int search (int value) {
 		if (head == NULL) return 0;
 		Node *tmp = head; int p = 2;
 		for (; tmp != NULL && tmp->value != value; p++) tmp = tmp->next;
 		if (tmp == NULL) return 0;
-		return p;
-	}
+		return p; }
 	void reverse () {
 		if (head == NULL) return;
 		Node *tmp = head, *tmp2 = NULL, *prev = NULL;
 		while (tmp != NULL) {
-			tmp2 = tmp->next;
-			tmp->next = prev;
-			prev = tmp;
-			tmp = tmp2;
-		}
-		head = prev;
-	}
+			tmp2 = tmp->next; tmp->next = prev;
+			prev = tmp; tmp = tmp2; }
+		head = prev; }
 	void clear () {
 		if (head == NULL) return;
 		Node *tmp = head, *current = NULL;
 		while (tmp != NULL) {
-			current = tmp;
-			tmp = tmp->next;
-			delete current;
-		}
-		head = NULL;
-	}
+			current = tmp; tmp = tmp->next;
+			delete current; }
+		head = NULL; }
 };
 int main() {
-	SinglyLinkedList list;
-	int choice, position, value;
+	SinglyLinkedList list; int choice, position, value;
 	do {
 		cout << "1. Create Linked List\n";
 		cout << "2. Count Number of Nodes\n";
