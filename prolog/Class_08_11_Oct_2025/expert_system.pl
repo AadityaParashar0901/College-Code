@@ -30,16 +30,18 @@ career(ai_engineer, math, programming).
 career(digital_marketer, business, digital_marketing).
 career(digital_marketer, communication, analytics).
 
-% Interests: math, biology, computers, social_science, art, design, tech, cooking, business, communication, media, education, science
-% Skills: problem_solving, analytical_thinking, data_analysis, empathy, attention_to_detail, communication, critical_thinking, creativity, logic, coding, writing, patience, digital_literacy, leadership, project_management, organization, user_experience, cybersecurity, ai_skills, programming, digital_marketing, analytics
-
 recommend_career(Interest, Skill, Career) :- career(Career, Interest, Skill).
-
+interest(I) :- career(_, I, _). % used to get the list of interests
+skill(S) :- career(_, _, S). % used to get the list of skills
+all_interests(Interests) :- setof(I, interest(I), Interests).
+all_skills(Skills) :- setof(S, skill(S), Skills).
 ask_interest(Interest) :-
-	write("Enter your main interest area (math, biology, computers, social_science, art, design, tech, cooking, business, communication, media, education, science)"), nl,
+	all_interests(Interests),
+	write("Enter your main interest area "), write(Interests), nl,
 	read(Interest).
 ask_skill(Skill) :-
-	write("Enter your top skill (problem_solving, analytical_thinking, data_analysis, empathy, attention_to_detail, communication, critical_thinking, creativity, logic, coding, writing, patience, digital_literacy, leadership, project_management, organization, user_experience, cybersecurity, ai_skills, programming, digital_marketing, analytics)"), nl,
+	all_skills(Skills),
+	write("Enter your top skill "), write(Skills), nl,
 	read(Skill).
 expert_system :-
 	ask_interest(Interest),
